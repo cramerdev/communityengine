@@ -34,11 +34,12 @@
           %em=:required_we_will_send_a_confirmation_e_mail_to_the_address_you_enter.l
         = f.text_field :email
 
-        %label{"for"=>"user_birthdate"}
-          =:birthday.l
-          \:
-          %em=:required_you_must_be_at_least_years_old_to_sign_up.l_with_args(:min_age => AppConfig.min_age)
-        = date_select :user, :birthday, {:start_year => (Time.now.year - AppConfig.max_age), :end_year => (Time.now.year - AppConfig.min_age)}
+        -if AppConfig.age_restriction
+          %label{"for"=>"user_birthdate"}
+            =:birthday.l
+            \:
+            %em=:required_you_must_be_at_least_years_old_to_sign_up.l_with_args(:min_age => AppConfig.min_age)
+          = date_select :user, :birthday, {:start_year => (Time.now.year - AppConfig.max_age), :end_year => (Time.now.year - AppConfig.min_age)}
 
         -if AppConfig.require_captcha_on_signup
           .right{:style => 'margin-top:2em;'}= recaptcha_tags

@@ -1,4 +1,4 @@
-AppConfig.default_mce_options = {
+CommunityEngine::AppConfig.default_mce_options = {
   :theme => 'advanced',
   :browsers => %w{msie gecko safari},
   :theme_advanced_layout_manager => "SimpleLayout",
@@ -24,7 +24,7 @@ AppConfig.default_mce_options = {
 	:media_strict => false    
   }
   
-AppConfig.simple_mce_options = {
+CommunityEngine::AppConfig.simple_mce_options = {
   :theme => 'advanced',
   :browsers => %w{msie gecko safari},
   :cleanup_on_startup => true,

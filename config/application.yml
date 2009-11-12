@@ -27,6 +27,7 @@ robots_meta_list_content: 'noindex,follow'
 robots_meta_show_content: 'index,nofollow'
 
 # min and max age for users to use the site
+age_restriction: true
 min_age: 16
 max_age: 90
 

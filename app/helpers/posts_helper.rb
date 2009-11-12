@@ -29,5 +29,7 @@ module PostsHelper
       eos
     end
   end
+  
+  safe_helper(*instance_methods)
 
 end

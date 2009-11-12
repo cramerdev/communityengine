@@ -10,5 +10,7 @@ module FriendshipsHelper
     		"#{link_to(:accept_this_request.l, accept_user_friendship_path(friendship.user, friendship), :method => :put, :class => 'button positive')}"
     end
   end
+  
+  safe_helper(*instance_methods)
 
 end

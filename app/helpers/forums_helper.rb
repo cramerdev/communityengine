@@ -28,4 +28,6 @@ module ForumsHelper
     [icon, color, post  ]
   end
   
+  safe_helper(*instance_methods)
+  
 end
