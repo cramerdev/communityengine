@@ -7,12 +7,14 @@ module StringExtension
     end
     args << {:default => self}
       
-    if AppConfig.show_localization_keys_for_debugging
+    string = if AppConfig.show_localization_keys_for_debugging
       # wrap in a span to show the localization key
-      return "<span class='localized' localization_key='#{sym}'>#{I18n.t(sym, *args)}</span>"
+      "<span class='localized' localization_key='#{sym}'>#{I18n.t(sym, *args)}</span>"
     else
       I18n.t(sym, *args)
     end
+    
+    string.html_safe!
   end
   alias :l :localize
 end 
@@ -25,14 +27,15 @@ module SymbolExtensionCustom
   def localize_with_debugging(*args)
     localized_sym = I18n.translate(self, *args)
         
-    if !AppConfig.show_localization_keys_for_debugging 
+    string = if !AppConfig.show_localization_keys_for_debugging 
       localized_sym
     elsif DEBUG_EXEMPT.include?(self)
       localized_sym
     else
-      return "<span class='localized' localization_key='#{self.to_s}'>#{localized_sym}</span>"
+      "<span class='localized' localization_key='#{self.to_s}'>#{localized_sym}</span>"
     end
     
+    string.html_safe!
   end
   alias_method :l, :localize_with_debugging
   

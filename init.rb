@@ -63,4 +63,4 @@ class ActionView::Base
   end
 end
 
-CommunityEngine::Configurator.load_app_config!
+CommunityEngine::Environment.load_app_config!
